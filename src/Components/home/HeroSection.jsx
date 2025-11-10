@@ -15,6 +15,7 @@ const HeroSection = () => {
       </p>
       <div className="btns">
         <button className="menuBtn" onClick={() => navigate("/menu")}>
+          
           View Menu
         </button>
         <button className="tblBtn" onClick={() => navigate("/contact")}>

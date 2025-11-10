@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import BookTable from "../Components/contact/BookTable";
 
 const Contact = () => {
   return (
-    <section>Contact</section>
-  )
-}
+    <section>
+      <BookTable />
+    </section>
+  );
+};
 
-export default Contact
+export default Contact;

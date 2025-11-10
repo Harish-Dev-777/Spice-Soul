@@ -3,7 +3,7 @@ import "../../Styles/BookTable.css";
 
 const BookTable = () => {
   return (
-    <section className="book-section">
+    <section className="book-section" id="bookTable">
       <div className="book-content">
         <h1>Book a Table</h1>
         <p>
@@ -15,7 +15,12 @@ const BookTable = () => {
       <form className="book-form">
         <div className="form-group">
           <label htmlFor="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Enter your name" />
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+          />
         </div>
 
         <div className="form-group">
@@ -30,7 +35,13 @@ const BookTable = () => {
           </div>
           <div className="form-group">
             <label htmlFor="guestsCount">Guests</label>
-            <input type="number" id="guestsCount" name="guestsCount" placeholder="2" min="1" />
+            <input
+              type="number"
+              id="guestsCount"
+              name="guestsCount"
+              placeholder="2"
+              min="1"
+            />
           </div>
         </div>
 

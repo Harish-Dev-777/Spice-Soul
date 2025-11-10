@@ -107,10 +107,9 @@ input:focus {
 
   .form-row {
     flex-direction: column;
-
-    .form-group {
-      width: 100%;
-    }
+  }
+  .form-row > .form-group {
+    width: 100%;
   }
 
   .book-form {

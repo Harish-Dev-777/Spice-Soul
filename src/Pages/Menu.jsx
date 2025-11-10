@@ -1,9 +1,13 @@
-import React from 'react'
+import MenuItemCard from "../Components/menu/MenuItemCard";
+import "../Styles/Menu.css";
 
 const Menu = () => {
   return (
-    <section>Menu</section>
-  )
-}
+    <section id="menu" className="menu-section">
+      <h2 className="section-title">Our Menu</h2>
+      <MenuItemCard />
+    </section>
+  );
+};
 
-export default Menu
+export default Menu;

@@ -29,7 +29,7 @@
 /* Grid Layout */
 .signature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 35px;
 }
 
@@ -188,11 +188,5 @@
 
   .dish-description {
     font-size: 0.85rem;
-  }
-
-  .dish-meta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
   }
 }

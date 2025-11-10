@@ -2,6 +2,7 @@ import React from "react";
 import { navLinks, socialLinks } from "../../Data/footerData";
 import { FaInstagram, FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
 import "../../Styles/Footer.css";
+import { NavLink } from "react-router-dom";
 
 // Map icon names to actual React components
 const iconMap = {
@@ -29,7 +30,7 @@ const Footer = () => {
           <ul>
             {navLinks.map((link, index) => (
               <li key={index}>
-                <a href={link.path}>{link.name}</a>
+                <NavLink to={link.path}>{link.name}</NavLink>
               </li>
             ))}
           </ul>
@@ -39,9 +40,9 @@ const Footer = () => {
         <div className="footer-book">
           <h3>Reserve a Table</h3>
           <p>Experience culinary artistry at its finest.</p>
-          <a href="/book" className="book-btn">
+          <NavLink to="/contact" className="book-btn">
             Book Now
-          </a>
+          </NavLink>
 
           <div className="social-icons">
             {socialLinks.map((social, index) => {
@@ -63,7 +64,9 @@ const Footer = () => {
 
       {/* Bottom Line */}
       <div className="footer-bottom">
-        <p>© {new Date().getFullYear()} Spice & Soul. All rights reserved.</p>
+        <p>
+          &copy;{new Date().getFullYear()} Spice & Soul. All rights reserved.
+        </p>
       </div>
     </footer>
   );

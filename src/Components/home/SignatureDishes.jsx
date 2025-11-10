@@ -1,7 +1,9 @@
 import "../../Styles/SignatureDishes.css";
 import signatureDishes from "../../Data/signatureDishes";
+import { useNavigate } from "react-router-dom";
 
 const SignatureDishes = () => {
+  const navigate = useNavigate(null);
   return (
     <section className="signature-section">
       <div className="signature-header">
@@ -28,7 +30,9 @@ const SignatureDishes = () => {
         ))}
       </div>
       <div className="full-menu">
-        <button className="menuBtn">View Full Menu</button>
+        <button className="menuBtn" onClick={() => navigate("/menu")}>
+          View Full Menu
+        </button>
       </div>
     </section>
   );
