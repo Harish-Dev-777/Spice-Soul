@@ -7,8 +7,6 @@
   overflow: hidden;
 }
 
-
-
 /* Header */
 .testimonials-header {
   text-align: center;
@@ -45,7 +43,6 @@
   scroll-behavior: smooth;
   scrollbar-width: none;
 }
-
 
 /* Card Container */
 .testimonial-card-container {
@@ -129,6 +126,10 @@
 
 /* Mobile View */
 @media (max-width: 768px) {
+  .testimonial-card-container {
+    width: 60%;
+    scale: 0.7;
+  }
   .testimonial-card {
     flex: 0 0 100%;
   }

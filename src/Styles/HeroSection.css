@@ -11,7 +11,7 @@
   color: #fff;
   overflow: hidden;
 
-  background-image: url("src/assets/images/restaurant.png");
+  background-image: url("/restaurant.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

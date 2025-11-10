@@ -39,13 +39,36 @@
 }
 
 .footer-nav ul li {
-  margin: 8px 0;
+  margin: 10px 0;
 }
 
 .footer-nav a {
+  position: relative;
   color: #cfcfcf;
   text-decoration: none;
   font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+/* underline animation for nav links */
+.footer-nav a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: var(--accent);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.footer-nav a:hover {
+  color: var(--accent);
+}
+
+.footer-nav a:hover::after {
+  width: 100%;
 }
 
 .footer-book p {
@@ -66,6 +89,7 @@
   text-decoration: none;
 }
 
+/* --- Social Icons --- */
 .social-icons {
   display: flex;
   gap: 18px;
@@ -73,8 +97,12 @@
 
 .social-icons a {
   font-size: 1.3rem;
-  color: var(--accent);
+  color: rgba(255, 255, 255, 0.7); /* subtle white tint */
   transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: var(--accent);
 }
 
 /* Footer Bottom */
@@ -93,9 +121,13 @@
   }
 
   .footer-brand h2 {
+    text-align: center;
     font-size: 1.7rem;
   }
-  
+  .footer-brand p {
+    text-align: center;
+  }
+
   .footer-nav,
   .footer-book {
     text-align: center;
