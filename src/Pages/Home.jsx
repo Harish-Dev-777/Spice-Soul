@@ -14,7 +14,9 @@ const Home = () => {
       <ChefsHighlight />
       <Ambiance />
       <Testimonials />
-      <BookTable/>
+      <div className="bookTable">
+        <BookTable />
+      </div>
     </section>
   );
 };

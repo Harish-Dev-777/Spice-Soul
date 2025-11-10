@@ -1,29 +1,29 @@
 .book-section {
-  width: 100%;
-  padding: 100px 8vw;
-  background: var(--primary-bg);
-  color: #fff;
-  text-align: center;
+  flex: 1;
+  min-width: 320px;
+  max-width: 500px;
+  padding: 40px 30px;
+  border-radius: 16px;
+  background: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
 .book-content {
-  margin-bottom: 60px;
-  max-width: 700px;
+  margin-bottom: 40px;
 }
 
-.book-content h1 {
-  font-size: 2.8rem;
+.book-content h2 {
+  font-size: 2rem;
   color: var(--accent);
   font-weight: 700;
   margin-bottom: 10px;
-  letter-spacing: 1px;
 }
 
 .book-content p {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: #cfcfcf;
   line-height: 1.6;
 }
@@ -35,15 +35,10 @@
 
 /* FORM STYLES */
 .book-form {
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
   width: 100%;
-  max-width: 600px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  border: 1px solid rgba(205, 150, 31, 0.2);
+  gap: 20px;
 }
 
 .form-group {
@@ -65,21 +60,23 @@ input {
   border: 1px solid rgba(205, 150, 31, 0.25);
   outline: none;
   font-size: 1rem;
-  background: #1a1a1a;
+  background: #2a2a2a;
   color: #fff;
+  transition: all 0.3s ease;
 }
 
 input:focus {
   border: 1px solid var(--accent);
-  background: #222;
+  background: #1e1e1e;
 }
 
 .form-row {
   display: flex;
   gap: 20px;
-  .form-group {
-    width: 50%;
-  }
+}
+
+.form-row .form-group {
+  flex: 1;
 }
 
 .book-btn {
@@ -87,32 +84,31 @@ input:focus {
   border: none;
   color: var(--primary-bg);
   font-weight: 600;
-  font-size: 1.1rem;
-  padding: 14px 30px;
-  border-radius: 12px;
+  font-size: 1.05rem;
+  padding: 12px 0;
+  border-radius: 10px;
   cursor: pointer;
-  margin-top: 10px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
 }
+
 .book-btn:hover {
-  border: 2px solid var(--accent);
-  background-color: transparent;
+  background: transparent;
   color: var(--accent);
+  border: 1px solid var(--accent);
 }
+
 /* RESPONSIVE */
 @media (max-width: 768px) {
-  .book-content h1 {
-    font-size: 2rem;
+  .book-section {
+    width: 100%;
+    padding: 30px;
   }
 
   .form-row {
     flex-direction: column;
   }
-  .form-row > .form-group {
-    width: 100%;
-  }
 
-  .book-form {
-    padding: 30px;
+  .book-content h2 {
+    font-size: 1.8rem;
   }
 }

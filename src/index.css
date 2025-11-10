@@ -43,3 +43,8 @@ li {
   text-decoration: none;
   list-style: none;
 }
+.bookTable{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,50 +1,78 @@
 import React from "react";
 import "../../Styles/BookTable.css";
 
+import { useState } from "react";
+import axios from "axios";
+
 const BookTable = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    date: "",
+    time: "",
+    guestsCount: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      await axios.post("http://localhost:5000/api/book", formData);
+      alert("✅ Table booked successfully!");
+      setFormData({ name: "", date: "", time: "", guestsCount: "" });
+    } catch (error) {
+      alert("❌ Booking failed, try again!");
+      console.log(error);
+    }
+  };
+
   return (
-    <section className="book-section" id="bookTable">
+    <section className="book-section">
       <div className="book-content">
         <h1>Book a Table</h1>
         <p>
-          Reserve your table online for an unforgettable{" "}
-          <span>Spice & Soul</span> dining experience.
+          Reserve your table at <span>Spice & Soul</span> for a perfect dining
+          experience.
         </p>
       </div>
 
-      <form className="book-form">
+      <form className="book-form" onSubmit={handleSubmit}>
         <div className="form-group">
-          <label htmlFor="name">Name</label>
+          <label>Name</label>
+          <input name="name" value={formData.name} onChange={handleChange} />
+        </div>
+        <div className="form-group">
+          <label>Date</label>
           <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Enter your name"
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
           />
         </div>
-
-        <div className="form-group">
-          <label htmlFor="date">Date</label>
-          <input type="date" id="date" name="date" />
-        </div>
-
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="time">Time</label>
-            <input type="time" id="time" name="time" />
+            <label>Time</label>
+            <input
+              type="time"
+              name="time"
+              value={formData.time}
+              onChange={handleChange}
+            />
           </div>
           <div className="form-group">
-            <label htmlFor="guestsCount">Guests</label>
+            <label>Guests</label>
             <input
               type="number"
-              id="guestsCount"
               name="guestsCount"
-              placeholder="2"
-              min="1"
+              value={formData.guestsCount}
+              onChange={handleChange}
             />
           </div>
         </div>
-
         <button type="submit" className="book-btn">
           Book Now
         </button>
