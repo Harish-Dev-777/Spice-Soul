@@ -3,8 +3,8 @@ import Home from "./Pages/Home";
 import Menu from "./Pages/Menu";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
-import Navbar from "./Components/Common/Navbar";
-import Footer from "./Components/Common/Footer";
+import Footer from "./Components/common/Footer";
+import Navbar from "./Components/common/Navbar";
 
 const App = () => {
   return (
