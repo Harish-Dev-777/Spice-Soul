@@ -1,0 +1,198 @@
+.heroSection {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+  gap: 20px;
+  color: #fff;
+  overflow: hidden;
+
+  background-image: url("src/assets/images/restaurant.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.heroSection::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.726);
+  z-index: 1;
+}
+
+.heroSection * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Text Styling */
+.heroSection h1 {
+  font-size: 6rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.heroSection h3 {
+  font-size: 1.8rem;
+  font-weight: 400;
+  opacity: 0.9;
+  letter-spacing: 1.3px;
+  font-style: italic;
+}
+
+.heroSection p {
+  font-size: 1.3rem;
+  color: rgb(220, 220, 220);
+  max-width: 600px;
+}
+
+/* Buttons */
+.btns {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.btns button {
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.3s ease-in-out;
+}
+
+.menuBtn {
+  background-color: var(--accent);
+  border: none;
+  padding: 12px 36px;
+  color: var(--primary-bg);
+}
+
+.menuBtn:hover {
+  border: 2px solid var(--accent);
+  background-color: transparent;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.tblBtn {
+  padding: 12px 30px;
+  border: 2px solid var(--accent);
+  background-color: transparent;
+  color: var(--accent);
+}
+
+.tblBtn:hover {
+  background-color: var(--accent);
+  color: var(--primary-bg);
+  cursor: pointer;
+}
+
+/* ----------------------------- */
+/* ✅ RESPONSIVE DESIGN SECTION  */
+/* ----------------------------- */
+
+/* Large Tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .heroSection h1 {
+    font-size: 4.5rem;
+  }
+
+  .heroSection h3 {
+    font-size: 1.5rem;
+  }
+
+  .heroSection p {
+    font-size: 1.1rem;
+    max-width: 500px;
+  }
+
+  .btns {
+    gap: 20px;
+  }
+
+  .btns button {
+    padding: 10px 28px;
+  }
+}
+
+/* Tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  .heroSection {
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  .heroSection h1 {
+    font-size: 4rem;
+    margin-top: 30px;
+  }
+
+  .heroSection h3 {
+    font-size: 1.3rem;
+  }
+
+  .heroSection p {
+    font-size: 1rem;
+  }
+
+  .btns {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .btns button {
+    width: 280px;
+    padding: 15px;
+  }
+}
+
+/* Mobile Devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .heroSection {
+    height: 100vh;
+    padding: 0 15px;
+    gap: 10px;
+  }
+
+  .heroSection h1 {
+    font-size: 3rem;
+    margin-top: 50px;
+  }
+
+  .heroSection h3 {
+    font-size: 1.1rem;
+    margin-top: 10px;
+  }
+
+  .heroSection p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-top: 20px;
+  }
+  .btns {
+    margin-top: 20px;
+  }
+  .btns button {
+    font-size: 14px;
+  }
+}
+
+/* Small Mobile (max-width: 360px) */
+@media (max-width: 360px) {
+  .heroSection h1 {
+    font-size: 2rem;
+  }
+
+  .heroSection h3 {
+    font-size: 1rem;
+  }
+
+  .heroSection p {
+    font-size: 0.85rem;
+  }
+}

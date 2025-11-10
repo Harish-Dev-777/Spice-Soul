@@ -1,0 +1,198 @@
+.signature-section {
+  width: 100%;
+  padding: 80px 8vw;
+  background: var(--primary-bg);
+  color: #fefefe;
+}
+
+/* Header Section */
+.signature-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.signature-header h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 30px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.signature-header p {
+  color: #bdbdbd;
+  font-size: 1.2rem;
+  letter-spacing: 0.6px;
+}
+
+/* Grid Layout */
+.signature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 35px;
+}
+
+/* Dish Card */
+.dish-card {
+  background: var(--secondary-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.dish-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+}
+
+/* Dish Image */
+.dish-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+  filter: brightness(0.9);
+}
+
+.dish-card:hover .dish-img {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+/* Dish Info */
+.dish-info {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.dish-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.dish-category {
+  color: var(--accent);
+  font-size: 0.95rem;
+  margin: 6px 0 12px;
+  font-style: italic;
+}
+
+.dish-description {
+  font-size: 0.95rem;
+  color: #bdbdbd;
+  line-height: 1.5;
+  margin-bottom: 18px;
+  flex-grow: 1;
+}
+
+/* Price and Rating */
+.dish-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 12px;
+}
+
+.dish-price {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.dish-rating {
+  background: rgba(205, 150, 31, 0.2);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: 600;
+}
+.full-menu {
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+.full-menu > .menuBtn {
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 12px 20px;
+  transition: all 0.3s ease-in-out;
+}
+.full-menu > .menuBtn:hover {
+  border: 2px solid var(--accent);
+  background-color: transparent;
+  color: var(--accent);
+  cursor: pointer;
+}
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .signature-header h1 {
+    font-size: 2.3rem;
+  }
+
+  .dish-img {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .signature-section {
+    padding: 60px 5vw;
+  }
+
+  .signature-header h1 {
+    font-size: 2rem;
+  }
+
+  .signature-header p {
+    font-size: 0.95rem;
+  }
+
+  .dish-description {
+    font-size: 0.9rem;
+  }
+
+  .dish-price {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .signature-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .dish-img {
+    height: 180px;
+  }
+
+  .dish-info {
+    padding: 16px;
+  }
+
+  .dish-name {
+    font-size: 1.2rem;
+  }
+
+  .dish-description {
+    font-size: 0.85rem;
+  }
+
+  .dish-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
