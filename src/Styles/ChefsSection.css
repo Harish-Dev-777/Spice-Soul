@@ -101,7 +101,13 @@
 }
 
 .chef-card-inner:hover .chef-image {
-  transform: scale(1.05);
+  transform: scale(1.02);
+}
+
+@media (min-width: 768px) {
+  .chef-card-inner:hover .chef-image {
+    transform: scale(1.05);
+  }
 }
 
 .chef-content {
