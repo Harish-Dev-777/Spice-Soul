@@ -1,192 +1,195 @@
 .signature-section {
-  width: 100%;
-  padding: 80px 8vw;
-  background: var(--primary-bg);
-  color: #fefefe;
+  padding: 120px 20px;
+  background-color: var(--secondary-bg);
+  color: #fff;
+  perspective: 1000px; /* Enable 3D space */
 }
 
-/* Header Section */
 .signature-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.signature-header.fade-in {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .signature-header h1 {
-  font-size: 3.2rem;
-  font-weight: 700;
+  font-size: 3.5rem;
   color: var(--accent);
-  margin-top: 30px;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
+  margin-bottom: 15px;
+  font-family: "Playfair Display", serif;
+  letter-spacing: -1px;
 }
 
 .signature-header p {
-  color: #bdbdbd;
   font-size: 1.2rem;
-  letter-spacing: 0.6px;
+  color: #888;
+  font-style: italic;
+  font-family: "Inter", sans-serif;
 }
 
-/* Grid Layout */
 .signature-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 35px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  max-width: 1300px;
+  margin: 0 auto;
 }
 
-/* Dish Card */
 .dish-card {
-  background: var(--secondary-bg);
-  border-radius: 16px;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease-in-out;
-  display: flex;
-  flex-direction: column;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s forwards;
+  position: relative;
 }
 
 .dish-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  border-color: var(--accent);
+  z-index: 10;
 }
 
-/* Dish Image */
+.dish-img-container {
+  width: 100%;
+  height: 300px; /* Taller images */
+  overflow: hidden;
+  position: relative;
+}
+
 .dish-img {
   width: 100%;
-  height: 220px;
+  height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
-  filter: brightness(0.9);
+  transition: transform 0.8s ease;
+  filter: grayscale(30%);
 }
 
 .dish-card:hover .dish-img {
-  transform: scale(1.05);
-  filter: brightness(1);
+  transform: scale(1.15);
+  filter: grayscale(0%);
 }
 
-/* Dish Info */
 .dish-info {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  padding: 30px;
+  position: relative;
 }
 
 .dish-name {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #ffffff;
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+  color: #fff;
+  font-family: "Playfair Display", serif;
 }
 
 .dish-category {
+  font-size: 0.8rem;
   color: var(--accent);
-  font-size: 0.95rem;
-  margin: 6px 0 12px;
-  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  display: inline-block;
+  border-bottom: 1px solid rgba(205, 150, 31, 0.3);
+  padding-bottom: 2px;
 }
 
 .dish-description {
-  font-size: 0.95rem;
-  color: #bdbdbd;
-  line-height: 1.5;
-  margin-bottom: 18px;
-  flex-grow: 1;
+  font-size: 1rem;
+  color: #999;
+  margin-bottom: 25px;
+  line-height: 1.7;
+  font-weight: 300;
 }
 
-/* Price and Rating */
 .dish-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  padding-top: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .dish-price {
-  font-weight: 700;
-  color: var(--accent);
-  font-size: 1rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #fff;
+  font-family: "Playfair Display", serif;
 }
 
 .dish-rating {
-  background: rgba(205, 150, 31, 0.2);
-  padding: 4px 10px;
-  border-radius: 8px;
   font-size: 0.9rem;
   color: var(--accent);
-  font-weight: 600;
+  letter-spacing: 1px;
 }
+
 .full-menu {
-  width: 100%;
-  height: 20vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 50px;
+  text-align: center;
+  margin-top: 80px;
 }
+
 .full-menu > .menuBtn {
-  border-radius: 20px;
-  font-weight: bold;
-  font-size: 16px;
-  padding: 12px 20px;
-  transition: all 0.3s ease-in-out;
-}
-.full-menu > .menuBtn:hover {
-  border: 2px solid var(--accent);
-  background-color: transparent;
+  border-radius: 0; /* Sharp buttons */
+  font-weight: 500;
+  font-size: 14px;
+  padding: 16px 40px;
+  transition: all 0.3s ease;
+  background: transparent;
+  border: 1px solid var(--accent);
   color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.full-menu > .menuBtn:hover {
+  background-color: var(--accent);
+  color: #000;
   cursor: pointer;
 }
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .signature-header h1 {
-    font-size: 2.3rem;
-  }
 
-  .dish-img {
-    height: 200px;
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .signature-section {
-    padding: 60px 5vw;
+    padding: 80px 20px;
   }
 
   .signature-header h1 {
-    font-size: 2rem;
+    font-size: 2.8rem;
   }
-
-  .signature-header p {
-    font-size: 0.95rem;
+  
+  .dish-card {
+    max-width: 450px;
+    margin: 0 auto;
   }
-
-  .dish-description {
-    font-size: 0.9rem;
-  }
-
-  .dish-price {
-    font-size: 0.95rem;
+  
+  .dish-img-container {
+    height: 250px;
   }
 }
 
 @media (max-width: 480px) {
   .signature-header h1 {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
   }
-
-  .dish-img {
-    height: 180px;
-  }
-
+  
   .dish-info {
-    padding: 16px;
-  }
-
-  .dish-name {
-    font-size: 1.2rem;
-  }
-
-  .dish-description {
-    font-size: 0.85rem;
+    padding: 20px;
   }
 }

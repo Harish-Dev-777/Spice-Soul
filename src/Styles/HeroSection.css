@@ -1,198 +1,259 @@
-.heroSection {
+.hero-section {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  text-align: center;
   position: relative;
-  gap: 20px;
-  color: #fff;
   overflow: hidden;
+  background: var(--primary-bg);
+}
 
+/* ===========================
+   BACKGROUND & OVERLAY
+   =========================== */
+.hero-bg {
+  position: absolute;
+  top: -10%;
+  left: 0;
+  width: 100%;
+  height: 120%;
   background-image: url("/restaurant.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  z-index: 1;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
-.heroSection::before {
-  content: "";
+.hero-bg-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.726);
-  z-index: 1;
+  background: 
+    linear-gradient(
+      to bottom,
+      rgba(10, 10, 10, 0.3) 0%,
+      rgba(10, 10, 10, 0.7) 50%,
+      rgba(10, 10, 10, 0.95) 100%
+    );
 }
 
-.heroSection * {
+/* ===========================
+   CONTENT CONTAINER
+   =========================== */
+.hero-content {
   position: relative;
-  z-index: 2;
-}
-
-/* Text Styling */
-.heroSection h1 {
-  font-size: 6rem;
-  font-weight: 700;
-  letter-spacing: 1.2px;
-}
-
-.heroSection h3 {
-  font-size: 1.8rem;
-  font-weight: 400;
-  opacity: 0.9;
-  letter-spacing: 1.3px;
-  font-style: italic;
-}
-
-.heroSection p {
-  font-size: 1.3rem;
-  color: rgb(220, 220, 220);
-  max-width: 600px;
-}
-
-/* Buttons */
-.btns {
+  z-index: 10;
   display: flex;
-  gap: 30px;
-  margin-top: 30px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  max-width: 1200px;
+  gap: 2rem;
 }
 
-.btns button {
-  border-radius: 25px;
-  font-size: 16px;
+/* ===========================
+   MAIN TITLE
+   =========================== */
+.hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(3.5rem, 14vw, 9rem);
   font-weight: 700;
-  transition: all 0.3s ease-in-out;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--text-color);
+  text-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+  margin: 0;
+  will-change: transform;
 }
 
-.menuBtn {
-  background-color: var(--accent);
-  border: none;
-  padding: 12px 36px;
-  color: var(--primary-bg);
-}
-
-.menuBtn:hover {
-  border: 2px solid var(--accent);
-  background-color: transparent;
+.title-accent {
   color: var(--accent);
+  font-style: italic;
+  margin: 0 0.3em;
+}
+
+/* ===========================
+   QUOTE
+   =========================== */
+.hero-quote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 3.5vw, 2.25rem);
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(240, 240, 240, 0.85);
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+  margin: 0;
+  max-width: 700px;
+}
+
+/* ===========================
+   CTA BUTTONS
+   =========================== */
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-buttons button {
+  position: relative;
+  padding: 1rem 2.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: 50px;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid;
+  cursor: pointer;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000000 !important;
+}
+
+.btn-primary span {
+  color: #000000 !important;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: var(--accent) !important;
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.btn-primary:hover span {
+  color: var(--accent) !important;
+}
+
+.btn-arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+  stroke: currentColor;
+}
+
+.btn-primary:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: var(--text-color);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-color);
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   SCROLL INDICATOR
+   =========================== */
+.scroll-indicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
   cursor: pointer;
 }
 
-.tblBtn {
-  padding: 12px 30px;
-  border: 2px solid var(--accent);
-  background-color: transparent;
+.scroll-indicator:hover {
+  opacity: 1;
+}
+
+.scroll-text {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.scroll-arrow {
+  width: 22px;
+  height: 22px;
   color: var(--accent);
 }
 
-.tblBtn:hover {
-  background-color: var(--accent);
-  color: var(--primary-bg);
-  cursor: pointer;
-}
-
-/* ----------------------------- */
-/* ✅ RESPONSIVE DESIGN SECTION  */
-/* ----------------------------- */
-
-/* Large Tablets (max-width: 1024px) */
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
 @media (max-width: 1024px) {
-  .heroSection h1 {
-    font-size: 4.5rem;
+  .hero-title {
+    font-size: clamp(3rem, 12vw, 7rem);
   }
-
-  .heroSection h3 {
-    font-size: 1.5rem;
-  }
-
-  .heroSection p {
-    font-size: 1.1rem;
-    max-width: 500px;
-  }
-
-  .btns {
-    gap: 20px;
-  }
-
-  .btns button {
-    padding: 10px 28px;
+  
+  .hero-quote {
+    font-size: clamp(1.1rem, 3vw, 1.9rem);
   }
 }
 
-/* Tablets (max-width: 768px) */
 @media (max-width: 768px) {
-  .heroSection {
-    gap: 30px;
-    padding: 0 20px;
+  .hero-content {
+    gap: 1.8rem;
   }
 
-  .heroSection h1 {
-    font-size: 4rem;
-    margin-top: 30px;
-  }
-
-  .heroSection h3 {
-    font-size: 1.3rem;
-  }
-
-  .heroSection p {
-    font-size: 1rem;
-  }
-
-  .btns {
+  .hero-buttons {
     flex-direction: column;
-    gap: 15px;
+    width: 100%;
+    max-width: 350px;
+    gap: 1rem;
   }
 
-  .btns button {
-    width: 280px;
-    padding: 15px;
+  .hero-buttons button {
+    width: 100%;
+    justify-content: center;
+    padding: 0.95rem 2.2rem;
+  }
+
+  .scroll-indicator {
+    bottom: 2rem;
   }
 }
 
-/* Mobile Devices (max-width: 480px) */
 @media (max-width: 480px) {
-  .heroSection {
-    height: 100vh;
-    padding: 0 15px;
-    gap: 10px;
+  .hero-title {
+    letter-spacing: -0.04em;
   }
 
-  .heroSection h1 {
-    font-size: 3rem;
-    margin-top: 50px;
-  }
-
-  .heroSection h3 {
+  .hero-quote {
     font-size: 1.1rem;
-    margin-top: 10px;
   }
 
-  .heroSection p {
+  .hero-buttons button {
+    padding: 0.9rem 2rem;
     font-size: 0.9rem;
-    line-height: 1.5;
-    margin-top: 20px;
-  }
-  .btns {
-    margin-top: 20px;
-  }
-  .btns button {
-    font-size: 14px;
   }
 }
 
-/* Small Mobile (max-width: 360px) */
-@media (max-width: 360px) {
-  .heroSection h1 {
-    font-size: 2rem;
-  }
-
-  .heroSection h3 {
-    font-size: 1rem;
-  }
-
-  .heroSection p {
-    font-size: 0.85rem;
+/* Performance Optimizations */
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg,
+  .hero-title,
+  .hero-quote {
+    will-change: auto;
   }
 }

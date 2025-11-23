@@ -1,0 +1,104 @@
+.chef-section {
+  padding: 6rem 1.5rem;
+  background-color: var(--primary-bg);
+  overflow: hidden;
+}
+
+.chef-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .chef-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.chef-content {
+  position: relative;
+  z-index: 2;
+}
+
+.sub-heading {
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+.heading {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  color: var(--text-color);
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .heading {
+    font-size: 3.5rem;
+  }
+}
+
+.highlight {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.description {
+  color: var(--text-muted);
+  font-size: 1.125rem;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  font-style: italic;
+}
+
+.signature {
+  margin-top: 1.5rem;
+}
+
+.signature p {
+  font-family: "Playfair Display", serif;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  margin-bottom: 0.25rem;
+}
+
+.signature span {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+}
+
+.chef-image-wrapper {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  aspect-ratio: 3/4;
+}
+
+.reveal-mask {
+  width: 100%;
+  height: 100%;
+}
+
+.chef-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s ease-out;
+}
+
+.chef-image-wrapper:hover .chef-img {
+  transform: scale(1.05);
+}

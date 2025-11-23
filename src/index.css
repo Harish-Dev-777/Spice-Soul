@@ -5,23 +5,47 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 :root {
-  --primary-bg: #0c0a09;
-  --accent: #cd961f;
-  --secondary-bg: #212121;
+  /* Premium Dark Theme - Single Source of Truth */
+  --primary-bg: #0a0a0a;
+  --secondary-bg: #121212;
+  --text-color: #f0f0f0;
+  --text-muted: #a0a0a0;
+  --accent: #d4af37; /* Gold */
+  --accent-hover: #b8962e;
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --border-color: rgba(255, 255, 255, 0.08);
+  --overlay-color: rgba(0, 0, 0, 0.85);
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
 }
-html,
-body {
+
+html {
   scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  /* Enable hardware acceleration for smooth scrolling */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
   overflow-x: hidden;
   line-height: 1.6;
   background-color: var(--primary-bg);
-  font-family: "Inter", sans-serif;
-  line-height: 1.6;
+  color: var(--text-color);
+  font-family: var(--font-body);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Performance optimization */
+  will-change: scroll-position;
 }
+
 body::selection {
   background-color: rgba(244, 187, 3, 0.438);
 }
+
 ::-webkit-scrollbar {
   display: none;
 }
@@ -29,9 +53,9 @@ body::selection {
 h1,
 h2,
 h3 {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-heading);
   font-weight: 700;
-  color: #fefefe;
+  color: var(--text-color);
 }
 
 body,
@@ -39,12 +63,70 @@ p,
 span,
 a,
 li {
-  color: #cfcfcf;
+  color: var(--text-muted);
   text-decoration: none;
   list-style: none;
 }
-.bookTable{
+
+.bookTable {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* Performance optimizations */
+img {
+  content-visibility: auto;
+  /* Prevent layout shifts */
+  height: auto;
+  display: block;
+}
+
+/* GPU acceleration for animations */
+.menu-item-card,
+.chef-card,
+.testimonial-card,
+.ambiance-card {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

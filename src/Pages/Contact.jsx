@@ -8,10 +8,18 @@ import {
 } from "react-icons/fa";
 
 import BookTable from "../Components/contact/BookTable";
+import SEO from "../Components/common/SEO";
 
 const Contact = () => {
   return (
-    <section id="contact" className="contact-section">
+    <>
+      <SEO
+        title="Contact Us"
+        description="Get in touch with Spice & Soul. Reserve your table, ask questions, or share feedback. We're here to make your dining experience memorable."
+        keywords="contact, reservations, book table, restaurant contact, location, phone number, email"
+        url="https://spice-and-soul.vercel.app/contact"
+      />
+      <section id="contact" className="contact-section">
       <div className="contact-container">
         {/* ---------- LEFT CONTENT ---------- */}
         <div className="contact-info">
@@ -51,6 +59,7 @@ const Contact = () => {
         <BookTable />
       </div>
     </section>
+    </>
   );
 };
 

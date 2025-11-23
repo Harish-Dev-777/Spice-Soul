@@ -1,114 +1,135 @@
-.book-section {
-  flex: 1;
-  min-width: 320px;
-  max-width: 500px;
-  padding: 40px 30px;
-  border-radius: 16px;
-  background: transparent;
+.book-table-section {
+  padding: 6rem 1.5rem;
+  background-color: var(--secondary-bg);
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  text-align: center;
+  min-height: 80vh;
+  background-image: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
 }
 
-.book-content {
-  margin-bottom: 40px;
-}
-
-.book-content h2 {
-  font-size: 2rem;
-  color: var(--accent);
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.book-content p {
-  font-size: 1.05rem;
-  color: #cfcfcf;
-  line-height: 1.6;
-}
-
-.book-content span {
-  color: var(--accent);
-  font-weight: 600;
-}
-
-/* FORM STYLES */
-.book-form {
+.form-container {
   width: 100%;
+  max-width: 600px;
+  /* background-color: var(--card-bg); Removed as per request */
+  /* border: 1px solid var(--border-color); */
+  padding: 2rem;
+  /* border-radius: 1.5rem; */
+  /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); */
+  /* backdrop-filter: blur(10px); */
+}
+
+@media (min-width: 768px) {
+  .form-container {
+    padding: 3rem;
+  }
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.form-header h2 {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.form-header p {
+  color: var(--text-muted);
+}
+
+.booking-form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 1.5rem;
 }
 
 .form-group {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-
-label {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: var(--accent);
-  margin-bottom: 6px;
-}
-
-input {
-  padding: 12px 15px;
-  border-radius: 10px;
-  border: 1px solid rgba(205, 150, 31, 0.25);
-  outline: none;
-  font-size: 1rem;
-  background: #2a2a2a;
-  color: #fff;
-  transition: all 0.3s ease;
-}
-
-input:focus {
-  border: 1px solid var(--accent);
-  background: #1e1e1e;
+  position: relative;
 }
 
 .form-row {
-  display: flex;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
 }
 
-.form-row .form-group {
-  flex: 1;
+@media (min-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
-.book-btn {
-  background: var(--accent);
+.booking-form input {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  color: var(--text-color);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.booking-form input:focus {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Floating Label */
+.booking-form label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  padding: 0 0.4rem;
+  font-size: 0.95rem;
+}
+
+.booking-form input:focus ~ label,
+.booking-form input:not(:placeholder-shown) ~ label {
+  top: -0.7rem;
+  left: 0.8rem;
+  font-size: 0.75rem;
+  color: #fff;
+
+  padding: 0 0.4rem;
+}
+
+/* Custom Date/Time inputs */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover,
+input[type="time"]::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+.submit-btn {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--accent);
+  color: black;
+  font-weight: bold;
   border: none;
-  color: var(--primary-bg);
-  font-weight: 600;
-  font-size: 1.05rem;
-  padding: 12px 0;
-  border-radius: 10px;
+  border-radius: 0.5rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.book-btn:hover {
-  background: transparent;
-  color: var(--accent);
-  border: 1px solid var(--accent);
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .book-section {
-    width: 100%;
-    padding: 30px;
-  }
-
-  .form-row {
-    flex-direction: column;
-  }
-
-  .book-content h2 {
-    font-size: 1.8rem;
-  }
+.submit-btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
 }

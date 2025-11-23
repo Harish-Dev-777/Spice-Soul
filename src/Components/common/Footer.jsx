@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useRef } from "react";
 import { navLinks, socialLinks } from "../../Data/footerData";
 import { FaInstagram, FaFacebookF, FaTwitter, FaYoutube } from "react-icons/fa";
 import "../../Styles/Footer.css";
 import { NavLink } from "react-router-dom";
+import useGSAP from "../../hooks/useGSAP";
+import gsap from "gsap";
 
 // Map icon names to actual React components
 const iconMap = {
@@ -13,8 +15,25 @@ const iconMap = {
 };
 
 const Footer = () => {
+  const footerRef = useRef(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: footerRef.current,
+        start: "top 90%",
+      }
+    });
+
+    tl.from(".footer-brand", { y: 30, opacity: 0, duration: 0.8, ease: "power3.out" })
+      .from(".footer-nav", { y: 30, opacity: 0, duration: 0.8 }, "-=0.6")
+      .from(".footer-book", { y: 30, opacity: 0, duration: 0.8 }, "-=0.6")
+      .from(".footer-bottom", { opacity: 0, duration: 1 }, "-=0.4");
+
+  }, []);
+
   return (
-    <footer className="footer-section">
+    <footer className="footer-section" ref={footerRef}>
       <div className="footer-container">
         {/* Brand + Quote */}
         <div className="footer-brand">
@@ -30,7 +49,11 @@ const Footer = () => {
           <ul>
             {navLinks.map((link, index) => (
               <li key={index}>
-                <NavLink to={link.path}>{link.name}</NavLink>
+                <NavLink 
+                  to={link.path}
+                >
+                  {link.name}
+                </NavLink>
               </li>
             ))}
           </ul>

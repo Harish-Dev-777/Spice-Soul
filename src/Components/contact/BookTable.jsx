@@ -1,82 +1,139 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import "../../Styles/BookTable.css";
-
-import { useState } from "react";
-import axios from "axios";
+import useGSAP from "../../hooks/useGSAP";
+import gsap from "gsap";
 
 const BookTable = () => {
+  const containerRef = useRef(null);
   const [formData, setFormData] = useState({
     name: "",
+    email: "",
     date: "",
     time: "",
-    guestsCount: "",
+    guests: "",
   });
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: "top 75%",
+      }
+    });
+
+    tl.from(".form-header h2", {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    })
+    .from(".form-header p", {
+      y: 30,
+      opacity: 0,
+      duration: 0.8
+    }, "-=0.6")
+    .from(".booking-form", {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out"
+    }, "-=0.4");
+
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    try {
-      await axios.post("http://localhost:5000/api/book", formData);
-      alert("✅ Table booked successfully!");
-      setFormData({ name: "", date: "", time: "", guestsCount: "" });
-    } catch (error) {
-      alert("❌ Booking failed, try again!");
-      console.log(error);
-    }
+    console.log("Table Booked:", formData);
+    alert("Thank you! Your table has been requested.");
   };
 
   return (
-    <section className="book-section">
-      <div className="book-content">
-        <h1>Book a Table</h1>
-        <p>
-          Reserve your table at <span>Spice & Soul</span> for a perfect dining
-          experience.
-        </p>
-      </div>
-
-      <form className="book-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Name</label>
-          <input name="name" value={formData.name} onChange={handleChange} />
+    <section className="book-table-section" ref={containerRef}>
+      <div className="form-container">
+        <div className="form-header">
+          <h2>Reserve Your Table</h2>
+          <p>Join us for an unforgettable dining experience</p>
         </div>
-        <div className="form-group">
-          <label>Date</label>
-          <input
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-row">
+        
+        <form onSubmit={handleSubmit} className="booking-form">
           <div className="form-group">
-            <label>Time</label>
             <input
-              type="time"
-              name="time"
-              value={formData.time}
+              type="text"
+              name="name"
+              id="name"
+              value={formData.name}
               onChange={handleChange}
+              required
+              placeholder=" "
             />
+            <label htmlFor="name">Full Name</label>
           </div>
+
           <div className="form-group">
-            <label>Guests</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+              placeholder=" "
+            />
+            <label htmlFor="email">Email Address</label>
+          </div>
+
+          <div className="form-row">
+            <div className="form-group">
+              <input
+                type="date"
+                name="date"
+                id="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
+                placeholder=" "
+              />
+              <label htmlFor="date">Date</label>
+            </div>
+
+            <div className="form-group">
+              <input
+                type="time"
+                name="time"
+                id="time"
+                value={formData.time}
+                onChange={handleChange}
+                required
+                placeholder=" "
+              />
+              <label htmlFor="time">Time</label>
+            </div>
+          </div>
+
+          <div className="form-group">
             <input
               type="number"
-              name="guestsCount"
-              value={formData.guestsCount}
+              name="guests"
+              id="guests"
+              min="1"
+              max="20"
+              value={formData.guests}
               onChange={handleChange}
+              required
+              placeholder=" "
             />
+            <label htmlFor="guests">Number of Guests</label>
           </div>
-        </div>
-        <button type="submit" className="book-btn">
-          Book Now
-        </button>
-      </form>
+
+          <button type="submit" className="submit-btn">
+            Request Reservation
+          </button>
+        </form>
+      </div>
     </section>
   );
 };

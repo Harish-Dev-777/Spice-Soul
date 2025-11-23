@@ -7,7 +7,6 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
-  // const navigate = useNavigate(null);
 
   return (
     <nav className="navbar">
@@ -34,16 +33,13 @@ const Navbar = () => {
                 className={({ isActive }) =>
                   isActive ? "active-link" : "nav-link"
                 }
-                onClick={() => setMenuOpen(false)} // closes menu when a link is clicked
+                onClick={() => setMenuOpen(false)}
               >
                 {link.label}
               </NavLink>
             </li>
           ))}
         </ul>
-        <button className="book-tbl-btn" onClick={() => setMenuOpen(false)}>
-          Book a Table
-        </button>
       </div>
     </nav>
   );
