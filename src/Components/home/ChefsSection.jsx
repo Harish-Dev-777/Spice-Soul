@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import chefsData from "../../Data/chefsData";
+import OptimizedImage from "../common/OptimizedImage";
 import { FaQuoteLeft } from "react-icons/fa";
 import useGSAP from "../../hooks/useGSAP";
 import gsap from "gsap";
@@ -57,7 +58,11 @@ const ChefsSection = () => {
           <div key={index} className="chef-card">
             <div className="chef-card-inner">
               <div className="chef-image-container">
-                <img src={chef.image} alt={chef.name} className="chef-image" loading="lazy" />
+                <OptimizedImage 
+                  src={chef.image} 
+                  alt={chef.name} 
+                  className="chef-image"
+                />
                 <div className="chef-overlay"></div>
               </div>
               <div className="chef-content">
