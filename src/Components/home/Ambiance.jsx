@@ -15,45 +15,54 @@ import AmbianceImage8 from "../../assets/images/AmbianceImage8.png";
 
 const Ambiance = () => {
   const containerRef = useRef(null);
-  
+
   const images = [
-    AmbianceImage1, AmbianceImage2, AmbianceImage3, AmbianceImage4,
-    AmbianceImage5, AmbianceImage6, AmbianceImage7, AmbianceImage8,
+    AmbianceImage1,
+    AmbianceImage2,
+    AmbianceImage3,
+    AmbianceImage4,
+    AmbianceImage5,
+    AmbianceImage6,
+    AmbianceImage7,
+    AmbianceImage8,
   ];
 
   useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 70%",
-      }
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
     });
 
-    tl.from(".ambiance-header h1", {
-      y: 50,
-      opacity: 0,
-      duration: 1,
-      ease: "power3.out"
-    })
-    .from(".ambiance-header p", {
-      y: 30,
-      opacity: 0,
-      duration: 0.8
-    }, "-=0.6");
+    tl.fromTo(
+      ".ambiance-header h1",
+      { y: 50, opacity: 0 },
+      { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
+    ).fromTo(
+      ".ambiance-header p",
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8 },
+      "-=0.6"
+    );
 
     // Staggered grid reveal
-    gsap.from(".ambiance-card", {
-      y: 100,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.1,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".ambiance-grid",
-        start: "top 80%",
+    gsap.fromTo(
+      ".ambiance-card",
+      { y: 100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: ".ambiance-grid",
+          start: "top 85%",
+        },
       }
-    });
-
+    );
   }, []);
 
   return (
@@ -61,7 +70,7 @@ const Ambiance = () => {
       <div className="ambiance-header">
         <h1>Experience Our Ambiance</h1>
         <p>
-          Where luxury meets comfort - a perfect setting for every occasion.
+          "Where luxury meets comfort - a perfect setting for every occasion."
         </p>
       </div>
 
@@ -70,14 +79,12 @@ const Ambiance = () => {
           // Create a masonry pattern
           let gridClass = "";
           if (index === 0) gridClass = "span-big"; // 2x2
-          else if (index === 3 || index === 4 || index === 5 || index === 7) gridClass = "span-wide"; // 2x1
+          else if (index === 3 || index === 4 || index === 5 || index === 7)
+            gridClass = "span-wide"; // 2x1
           else if (index === 2) gridClass = "span-tall"; // 1x2
-          
+
           return (
-            <div 
-              className={`ambiance-card ${gridClass}`} 
-              key={index}
-            >
+            <div className={`ambiance-card ${gridClass}`} key={index}>
               <OptimizedImage
                 src={img}
                 alt={`Ambiance ${index + 1}`}

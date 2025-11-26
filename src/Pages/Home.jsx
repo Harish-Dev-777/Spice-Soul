@@ -1,12 +1,12 @@
 import React from "react";
 import HeroSection from "../Components/home/HeroSection";
 import SignatureDishes from "../Components/home/SignatureDishes";
-
 import ChefsSection from "../Components/home/ChefsSection";
 import Ambiance from "../Components/home/Ambiance";
 import Testimonials from "../Components/home/Testimonials";
 import BookTable from "../Components/contact/BookTable";
 import SEO from "../Components/common/SEO";
+import "../Styles/Home.css";
 
 const Home = () => {
   return (
@@ -17,13 +17,12 @@ const Home = () => {
         keywords="restaurant, fine dining, spice and soul, authentic cuisine, food, dining, reservations, gourmet food, chef specials, signature dishes"
         url="https://spice-and-soul.vercel.app/"
       />
-      <section id="home">
-        <div style={{ position: 'sticky', top: 0, zIndex: 0, height: '100vh' }}>
+      <div className="home-page" id="main-content">
+        <div className="hero-sticky-wrapper">
           <HeroSection />
         </div>
-        <div style={{ position: 'relative', zIndex: 1, backgroundColor: 'var(--primary-bg)' }}>
+        <div className="content-wrapper">
           <SignatureDishes />
-
           <ChefsSection />
           <Ambiance />
           <Testimonials />
@@ -31,7 +30,7 @@ const Home = () => {
             <BookTable />
           </div>
         </div>
-      </section>
+      </div>
     </>
   );
 };

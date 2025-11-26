@@ -1,70 +1,160 @@
+/* Premium Vintage Signature Dishes - Award Winning Design */
+
 .signature-section {
-  padding: 120px 20px;
+  padding: 8rem 1.5rem 6rem;
   background-color: var(--secondary-bg);
-  color: #fff;
-  perspective: 1000px; /* Enable 3D space */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Vintage texture overlay */
+.signature-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    );
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .signature-header {
   text-align: center;
-  margin-bottom: 80px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.signature-header.fade-in {
-  opacity: 1;
-  transform: translateY(0);
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .signature-header h1 {
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: var(--accent);
-  margin-bottom: 15px;
-  font-family: "Playfair Display", serif;
-  letter-spacing: -1px;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.signature-header h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
 .signature-header p {
-  font-size: 1.2rem;
-  color: #888;
+  font-size: 1.1rem;
+  color: var(--text-muted);
   font-style: italic;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-body);
+  max-width: 600px;
+  margin: 0 auto;
+  font-weight: 300;
+  letter-spacing: 0.02em;
 }
 
 .signature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 40px;
+  gap: 3rem;
   max-width: 1300px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
+/* Classic Vintage Card Design */
 .dish-card {
-  background: #111;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 0;
   overflow: hidden;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s forwards;
+  transition: all 0.4s ease;
   position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Vintage corner decorations */
+.dish-card::before,
+.dish-card::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  z-index: 2;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.dish-card::before {
+  top: 0.75rem;
+  left: 0.75rem;
+  border-right: none;
+  border-bottom: none;
+}
+
+.dish-card::after {
+  bottom: 0.75rem;
+  right: 0.75rem;
+  border-left: none;
+  border-top: none;
 }
 
 .dish-card:hover {
-  transform: translateY(-15px) scale(1.02);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+  transform: translateY(-10px);
+  border-color: rgba(212, 175, 55, 0.6);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.dish-card:hover::before,
+.dish-card:hover::after {
   border-color: var(--accent);
-  z-index: 10;
 }
 
 .dish-img-container {
   width: 100%;
-  height: 300px; /* Taller images */
+  height: 320px;
   overflow: hidden;
   position: relative;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+}
+
+/* Vintage photo effect */
+.dish-img-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .dish-img {
@@ -72,113 +162,140 @@
   height: 100%;
   object-fit: cover;
   transition: transform 0.8s ease;
-  filter: grayscale(30%);
+  filter: grayscale(0.2) sepia(0.1);
 }
 
 .dish-card:hover .dish-img {
-  transform: scale(1.15);
-  filter: grayscale(0%);
+  transform: scale(1.1);
+  filter: grayscale(0) sepia(0);
 }
 
 .dish-info {
-  padding: 30px;
+  padding: 2.5rem 2rem;
   position: relative;
 }
 
 .dish-name {
-  font-size: 1.8rem;
-  margin-bottom: 8px;
-  color: #fff;
-  font-family: "Playfair Display", serif;
+  font-size: 1.75rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
 
 .dish-category {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-  font-weight: 500;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.5rem;
+  font-weight: 400;
   display: inline-block;
-  border-bottom: 1px solid rgba(205, 150, 31, 0.3);
-  padding-bottom: 2px;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.dish-category::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 1px;
+  background: var(--accent);
 }
 
 .dish-description {
   font-size: 1rem;
-  color: #999;
-  margin-bottom: 25px;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
   line-height: 1.7;
   font-weight: 300;
+  font-style: italic;
 }
 
 .dish-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .dish-price {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 400;
-  color: #fff;
-  font-family: "Playfair Display", serif;
+  color: var(--accent);
+  font-family: var(--font-heading);
 }
 
 .dish-rating {
   font-size: 0.9rem;
   color: var(--accent);
-  letter-spacing: 1px;
+  letter-spacing: 0.05em;
+  font-weight: 400;
 }
 
 .full-menu {
   text-align: center;
-  margin-top: 80px;
+  margin-top: 5rem;
+  position: relative;
+  z-index: 2;
 }
 
-.full-menu > .menuBtn {
-  border-radius: 0; /* Sharp buttons */
-  font-weight: 500;
-  font-size: 14px;
-  padding: 16px 40px;
+.menuBtn {
+  border-radius: 0;
+  font-weight: 400;
+  font-size: 0.9rem;
+  padding: 1.1rem 3rem;
   transition: all 0.3s ease;
   background: transparent;
-  border: 1px solid var(--accent);
+  border: 2px solid var(--accent);
   color: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.full-menu > .menuBtn:hover {
-  background-color: var(--accent);
-  color: #000;
+  letter-spacing: 0.15em;
+  font-family: var(--font-heading);
+  position: relative;
+  overflow: hidden;
   cursor: pointer;
 }
 
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.menuBtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transition: left 0.4s ease;
+  z-index: -1;
+}
+
+.menuBtn:hover::before {
+  left: 0;
+}
+
+.menuBtn:hover {
+  color: #000;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .signature-section {
-    padding: 80px 20px;
+    padding: 6rem 1.5rem 4rem;
   }
 
   .signature-header h1 {
-    font-size: 2.8rem;
+    font-size: 2.25rem;
   }
-  
+
   .dish-card {
     max-width: 450px;
     margin: 0 auto;
   }
-  
+
   .dish-img-container {
     height: 250px;
   }
@@ -186,10 +303,10 @@
 
 @media (max-width: 480px) {
   .signature-header h1 {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
   }
-  
+
   .dish-info {
-    padding: 20px;
+    padding: 2rem 1.5rem;
   }
 }

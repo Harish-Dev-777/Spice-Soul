@@ -8,6 +8,11 @@ import LavaCake from "../assets/menu/ChocolateLavaCake.png";
 import MangoLassi from "../assets/menu/MangoLassi.png";
 import MasalaChai from "../assets/menu/MasalaChai.png";
 import Rasmalai from "../assets/menu/Rasmalai.png";
+import FriedChicken from "../assets/menu/FriedChicken.png";
+import ChickenBiryani from "../assets/menu/ChickenBiryani.png";
+import MuttonCurry from "../assets/menu/MuttonCurry.png";
+import Pizza from "../assets/menu/Pizza.png";
+import SweetLassi  from "../assets/menu/SweetLassi.png";
 
 export const menuData = [
   {
@@ -31,6 +36,16 @@ export const menuData = [
     rating: 4.8,
     image: ChickenTakka,
     tags: ["Spicy", "Grilled"],
+  },
+  {
+    id: 11,
+    category: "Starters",
+    name: "Spicy Fried Chicken",
+    description: "Crispy fried chicken marinated in secret spices.",
+    price: 349,
+    rating: 4.7,
+    image: FriedChicken,
+    tags: ["Non-Veg", "Crispy"],
   },
   {
     id: 3,
@@ -65,6 +80,36 @@ export const menuData = [
     tags: ["Spicy", "Signature Dish"],
   },
   {
+    id: 12,
+    category: "Main Course",
+    name: "Hyderabadi Chicken Biryani",
+    description: "Aromatic basmati rice cooked with tender chicken and spices.",
+    price: 399,
+    rating: 4.9,
+    image: ChickenBiryani,
+    tags: ["Non-Veg", "Spicy", "Popular"],
+  },
+  {
+    id: 13,
+    category: "Main Course",
+    name: "Spicy Mutton Curry",
+    description: "Tender mutton pieces cooked in a rich, spicy gravy.",
+    price: 449,
+    rating: 4.8,
+    image: MuttonCurry,
+    tags: ["Non-Veg", "Spicy"],
+  },
+  {
+    id: 14,
+    category: "Main Course",
+    name: "Farmhouse Pizza",
+    description: "Loaded with fresh vegetables and mozzarella cheese.",
+    price: 359,
+    rating: 4.5,
+    image: Pizza,
+    tags: ["Vegetarian", "Cheesy"],
+  },
+  {
     id: 6,
     category: "Desserts",
     name: "Gulab Jamun",
@@ -81,8 +126,19 @@ export const menuData = [
     description: "Molten chocolate cake served with vanilla ice cream.",
     price: 199,
     rating: 4.9,
-    image:LavaCake,
+    image: LavaCake,
     tags: ["Chocolate", "Hot & Cold"],
+  },
+  {
+    id: 10,
+    category: "Desserts",
+    name: "Rasmalai",
+    description:
+      "Soft paneer patties soaked in saffron-flavored milk with pistachios.",
+    price: 179,
+    rating: 4.8,
+    image: Rasmalai,
+    tags: ["Sweet", "Rich"],
   },
   {
     id: 8,
@@ -105,14 +161,13 @@ export const menuData = [
     tags: ["Hot", "Traditional"],
   },
   {
-    id: 10,
-    category: "Desserts",
-    name: "Rasmalai",
-    description:
-      "Soft paneer patties soaked in saffron-flavored milk with pistachios.",
-    price: 179,
-    rating: 4.8,
-    image: Rasmalai,
-    tags: ["Sweet", "Rich"],
+    id: 16,
+    category: "Beverages",
+    name: "Sweet Lassi",
+    description: "Traditional yogurt drink sweetened with sugar and cardamom.",
+    price: 99,
+    rating: 4.5,
+    image: SweetLassi,
+    tags: ["Cold", "Traditional"],
   },
 ];

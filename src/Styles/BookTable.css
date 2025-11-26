@@ -5,45 +5,84 @@
   justify-content: center;
   align-items: center;
   min-height: 80vh;
-  background-image: radial-gradient(circle at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle vintage texture */
+.book-table-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .form-container {
   width: 100%;
   max-width: 600px;
-  /* background-color: var(--card-bg); Removed as per request */
-  /* border: 1px solid var(--border-color); */
-  padding: 2rem;
-  /* border-radius: 1.5rem; */
-  /* box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); */
-  /* backdrop-filter: blur(10px); */
+  padding: 3rem;
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 
 @media (min-width: 768px) {
   .form-container {
-    padding: 3rem;
+    padding: 4rem;
   }
 }
 
 .form-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.2);
 }
 
 .form-header h2 {
-  font-size: 2rem;
-  color: var(--text-color);
-  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
 }
 
 .form-header p {
   color: var(--text-muted);
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.02em;
 }
 
 .booking-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .form-group {
@@ -53,7 +92,7 @@
 .form-row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 @media (min-width: 768px) {
@@ -62,74 +101,262 @@
   }
 }
 
+/* Classic Vintage Input Styles */
 .booking-form input {
   width: 100%;
-  padding: 1rem;
-  background-color: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--border-color);
-  border-radius: 0.5rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+  border-radius: 0;
   color: var(--text-color);
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 400;
   transition: all 0.3s ease;
   outline: none;
+  letter-spacing: 0.02em;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  border-bottom-color: rgba(212, 175, 55, 0.5);
 }
 
-.booking-form input:focus {
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-/* Floating Label */
+/* Classic Floating Label */
 .booking-form label {
   position: absolute;
-  left: 1rem;
-  top: 1rem;
-  color: var(--text-muted);
+  left: 1.5rem;
+  top: 1.25rem;
+  color: rgba(212, 175, 55, 0.6);
   pointer-events: none;
   transition: all 0.3s ease;
-  padding: 0 0.4rem;
-  font-size: 0.95rem;
+  font-size: 1.05rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: var(--font-heading);
 }
 
 .booking-form input:focus ~ label,
 .booking-form input:not(:placeholder-shown) ~ label {
-  top: -0.7rem;
-  left: 0.8rem;
+  top: -1.5rem;
+  left: 0;
   font-size: 0.75rem;
-  color: #fff;
-
-  padding: 0 0.4rem;
+  color: var(--accent);
+  font-weight: 400;
 }
 
-/* Custom Date/Time inputs */
+/* Vintage Decorative Line */
+.form-group::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  transition: all 0.4s ease;
+  transform: translateX(-50%);
+}
+
+.form-group:focus-within::after {
+  width: 100%;
+}
+
+/* Date/Time Inputs - Classic Style */
+input[type="date"],
+input[type="time"] {
+  color-scheme: dark;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Hide calendar/clock icons */
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
-  opacity: 0.5;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
   cursor: pointer;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator:hover,
-input[type="time"]::-webkit-calendar-picker-indicator:hover {
+/* Always show date/time values */
+input[type="date"]::-webkit-datetime-edit,
+input[type="time"]::-webkit-datetime-edit {
   opacity: 1;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  color: var(--text-color);
+  font-weight: 400;
 }
 
+/* Show placeholder-like text when empty */
+input[type="date"]:invalid::-webkit-datetime-edit,
+input[type="time"]:invalid::-webkit-datetime-edit {
+  color: rgba(212, 175, 55, 0.4);
+}
+
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="time"]::-webkit-datetime-edit-text {
+  color: rgba(212, 175, 55, 0.5);
+  padding: 0 0.25rem;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field,
+input[type="time"]::-webkit-datetime-edit-hour-field,
+input[type="time"]::-webkit-datetime-edit-minute-field,
+input[type="time"]::-webkit-datetime-edit-ampm-field {
+  padding: 0.2rem 0.4rem;
+  color: var(--text-color);
+  font-weight: 400;
+}
+
+input[type="date"]::-webkit-datetime-edit-month-field:focus,
+input[type="date"]::-webkit-datetime-edit-day-field:focus,
+input[type="date"]::-webkit-datetime-edit-year-field:focus,
+input[type="time"]::-webkit-datetime-edit-hour-field:focus,
+input[type="time"]::-webkit-datetime-edit-minute-field:focus,
+input[type="time"]::-webkit-datetime-edit-ampm-field:focus {
+  background: rgba(212, 175, 55, 0.1);
+  color: var(--accent);
+}
+
+/* Classic Vintage Submit Button */
 .submit-btn {
-  margin-top: 1rem;
-  padding: 1rem;
-  background-color: var(--accent);
-  color: black;
-  font-weight: bold;
-  border: none;
-  border-radius: 0.5rem;
+  margin-top: 2rem;
+  padding: 1.25rem 3rem;
+  background: transparent;
+  color: var(--accent);
+  font-weight: 400;
+  border: 2px solid var(--accent);
+  border-radius: 0;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.2em;
+  font-size: 0.95rem;
+  font-family: var(--font-heading);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 0 var(--accent);
+}
+
+/* Classic Fill Effect */
+.submit-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--accent);
+  transition: left 0.4s ease;
+  z-index: -1;
+}
+
+.submit-btn:hover::before {
+  left: 0;
 }
 
 .submit-btn:hover {
-  background-color: var(--accent-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+  color: #000;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3), inset 0 0 0 2px var(--accent);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(212, 175, 55, 0.2), inset 0 0 0 2px var(--accent);
+}
+
+/* Vintage Corner Decorations */
+.form-container::before,
+.form-container::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.form-container::before {
+  top: 1rem;
+  left: 1rem;
+  border-right: none;
+  border-bottom: none;
+}
+
+.form-container::after {
+  bottom: 1rem;
+  right: 1rem;
+  border-left: none;
+  border-top: none;
+}
+
+/* Accessibility - Remove visible outlines */
+.booking-form input:focus-visible {
+  outline: none;
+}
+
+.submit-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4), inset 0 0 0 2px var(--accent);
+}
+
+/* Disabled State */
+.submit-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: rgba(212, 175, 55, 0.3);
+  color: rgba(212, 175, 55, 0.3);
+}
+
+.submit-btn:disabled:hover::before {
+  left: -100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 767px) {
+  .form-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .form-header h2 {
+    font-size: 2rem;
+  }
+
+  .booking-form input {
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  .booking-form label {
+    left: 1.25rem;
+    top: 1rem;
+    font-size: 1rem;
+  }
+
+  .submit-btn {
+    padding: 1rem 2rem;
+    font-size: 0.85rem;
+  }
+
+  .form-container::before,
+  .form-container::after {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .book-table-section::before {
+    display: none;
+  }
+
+  .form-container {
+    border: 2px solid #000;
+    box-shadow: none;
+  }
 }

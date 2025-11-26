@@ -1,17 +1,67 @@
+/* Premium Vintage Ambiance Section - Award Winning Design */
+
 .ambiance-section {
-  padding: 6rem 1.5rem;
+  padding: 8rem 1.5rem 6rem;
   background-color: var(--primary-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Vintage texture overlay */
+.ambiance-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    );
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .ambiance-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 2;
 }
 
 .ambiance-header h1 {
-  font-size: 2.5rem;
-  color: var(--text-color);
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.ambiance-header h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
 }
 
 @media (min-width: 768px) {
@@ -22,17 +72,22 @@
 
 .ambiance-header p {
   color: var(--text-muted);
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   max-width: 600px;
   margin: 0 auto;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.02em;
 }
 
 .ambiance-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 @media (min-width: 768px) {
@@ -40,18 +95,63 @@
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 250px;
     gap: 1.5rem;
-    grid-auto-flow: dense; /* Fixes gaps by packing items */
+    grid-auto-flow: dense;
   }
 }
 
+/* Classic Vintage Card Design */
 .ambiance-card {
   position: relative;
-  border-radius: 1rem;
+  border-radius: 0; /* Sharp corners */
   overflow: hidden;
   cursor: pointer;
   height: 100%;
   width: 100%;
-  display: block; /* Ensure it behaves as a block */
+  display: block;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  transition: all 0.4s ease;
+  box-shadow: inset 0 0 0 0 rgba(212, 175, 55, 0);
+}
+
+/* Vintage corner decorations */
+.ambiance-card::before,
+.ambiance-card::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  z-index: 3;
+  transition: all 0.3s ease;
+  opacity: 0; /* Hidden by default, show on hover */
+}
+
+.ambiance-card::before {
+  top: 0.75rem;
+  left: 0.75rem;
+  border-right: none;
+  border-bottom: none;
+}
+
+.ambiance-card::after {
+  bottom: 0.75rem;
+  right: 0.75rem;
+  border-left: none;
+  border-top: none;
+}
+
+.ambiance-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), inset 0 0 0 1px var(--accent);
+  z-index: 10;
+}
+
+.ambiance-card:hover::before,
+.ambiance-card:hover::after {
+  opacity: 1;
+  width: 20px;
+  height: 20px;
 }
 
 /* Ensure the optimized image wrapper takes full height */
@@ -60,21 +160,39 @@
   width: 100% !important;
 }
 
+/* Vintage photo effect */
+.ambiance-card .optimized-image-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.ambiance-card:hover .optimized-image-wrapper::after {
+  opacity: 0.6;
+}
+
 @media (min-width: 768px) {
   .ambiance-card {
     height: 100%;
   }
-  
+
   /* Masonry Layout for Desktop */
   .span-big {
     grid-column: span 2;
     grid-row: span 2;
   }
-  
+
   .span-wide {
     grid-column: span 2;
   }
-  
+
   .span-tall {
     grid-row: span 2;
   }
@@ -84,9 +202,30 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.7s ease;
+  transition: transform 0.8s ease;
+  filter: grayscale(0.2) sepia(0.15) contrast(1.1);
 }
 
 .ambiance-card:hover .ambiance-img {
   transform: scale(1.1);
+  filter: grayscale(0) sepia(0) contrast(1);
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .ambiance-section {
+    padding: 6rem 1.5rem 4rem;
+  }
+
+  .ambiance-header h1 {
+    font-size: 2.25rem;
+  }
+
+  .ambiance-grid {
+    gap: 1rem;
+  }
+
+  .ambiance-card {
+    min-height: 200px;
+  }
 }

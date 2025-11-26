@@ -1,7 +1,36 @@
+/* Premium Vintage Contact Section - Award Winning Design */
+
 .contact-section {
   padding: 8rem 1.5rem 4rem;
   background-color: var(--primary-bg);
   min-height: 100vh;
+  position: relative;
+}
+
+/* Vintage texture overlay */
+.contact-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    );
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .contact-container {
@@ -9,7 +38,8 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
+  gap: 5rem;
+  position: relative;
 }
 
 @media (min-width: 992px) {
@@ -22,43 +52,95 @@
 .contact-info {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .contact-subtitle {
   font-size: 2rem;
-  color: var(--text-color);
+  color: var(--accent);
   margin-bottom: 1rem;
   font-family: var(--font-heading);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.contact-subtitle::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 1px;
+  background: var(--accent);
 }
 
 .contact-text {
   color: var(--text-muted);
   line-height: 1.8;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   margin-bottom: 2rem;
+  font-weight: 300;
+  font-style: italic;
 }
 
 .info-items {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .info-box {
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  padding: 1.5rem;
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-  border-radius: 1rem;
+  padding: 1.75rem 2rem;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 0;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Vintage corner decorations */
+.info-box::before,
+.info-box::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1px solid rgba(212, 175, 55, 0.4);
   transition: all 0.3s ease;
 }
 
+.info-box::before {
+  top: 0.75rem;
+  left: 0.75rem;
+  border-right: none;
+  border-bottom: none;
+}
+
+.info-box::after {
+  bottom: 0.75rem;
+  right: 0.75rem;
+  border-left: none;
+  border-top: none;
+}
+
 .info-box:hover {
-  border-color: var(--accent);
+  border-color: rgba(212, 175, 55, 0.6);
   transform: translateX(10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.info-box:hover::before,
+.info-box:hover::after {
+  border-color: var(--accent);
 }
 
 .info-icon {
@@ -71,4 +153,37 @@
   color: var(--text-color);
   font-size: 1rem;
   margin: 0;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .contact-section {
+    padding: 6rem 1.5rem 4rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1.75rem;
+  }
+
+  .contact-container {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-subtitle::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+
+  .info-box {
+    flex-direction: column;
+    text-align: center;
+  }
 }
